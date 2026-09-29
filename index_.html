@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saeed Abdelgalil | Red Team & Penetration Testing Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #020408;
+            color: #00ff66;
+            line-height: 1.6;
+        }
+
+        /* Full Screen Background Image (Fallback to high-tech network background if local image is missing) */
+        .site-bg-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('saeed.png.jpeg'), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .site-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 4, 8, 0.85);
+            z-index: 1;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(0, 255, 102, 0.3);
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #00ff66;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ff66;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .terminal-badge {
+            display: inline-block;
+            background-color: rgba(0, 255, 102, 0.1);
+            color: #00ff66;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: #00ff66;
+            text-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .circular-icons-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 35px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .circle-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: rgba(15, 23, 42, 0.9);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .circle-icon:hover {
+            background-color: #00ff66;
+            color: #020408;
+            border-color: #00ff66;
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: rgba(0, 255, 102, 0.05);
+            color: #00ff66;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #00ff66;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: rgba(0, 255, 102, 0.2);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.6);
+            transform: translateY(-2px);
+            color: #00ff66;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+        }
+
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-icon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            color: #00ff66;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .section-title span {
+            color: #00ff66;
+            text-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
+        }
+
+        .card-box {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+            transition: all 0.35s ease;
+        }
+
+        .card-box:hover {
+            border-color: #00ff66;
+            background: rgba(12, 19, 34, 0.95);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.4), inset 0 0 15px rgba(0, 255, 102, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .card-box strong {
+            color: #00ff66;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.35s ease;
+        }
+
+        .service-card:hover {
+            border-color: #00ff66;
+            transform: translateY(-8px);
+            background: rgba(12, 19, 34, 0.95);
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.5), inset 0 0 15px rgba(0, 255, 102, 0.15);
+        }
+
+        .service-icon-box {
+            width: 70px;
+            height: 70px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px auto;
+            color: #00ff66;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon-box {
+            background: rgba(0, 255, 102, 0.2);
+            border-color: #00ff66;
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.8);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .service-card p {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.35s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #00ff66;
+            transform: translateY(-5px);
+            background: rgba(12, 19, 34, 0.95);
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.5), inset 0 0 15px rgba(0, 255, 102, 0.15);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .skill-card p {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 16px;
+            transition: all 0.35s ease;
+        }
+
+        .contact-container:hover {
+            border-color: #00ff66;
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.4);
+        }
+
+        .contact-illustration {
+            text-align: center;
+        }
+
+        .contact-illustration i {
+            font-size: 7rem;
+            color: #00ff66;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0,255,102,0.4));
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: #05070b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #00ff66;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            background-color: rgba(0, 255, 102, 0.1);
+            color: #00ff66;
+            padding: 14px 28px;
+            border: 1px solid #00ff66;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            background-color: #00ff66;
+            color: #020408;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.8);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-section { padding: 40px 0; }
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="site-bg-wrapper">
+        <div class="site-overlay"></div>
+
+        <div class="main-container">
+            
+            <nav id="home">
+                <a href="#home" class="logo">root@saeed-sec:~#</a>
+                <ul class="nav-links">
+                    <li><a href="#home">./home</a></li>
+                    <li><a href="#about">./about</a></li>
+                    <li><a href="#services">./services</a></li>
+                    <li><a href="#skills">./toolkit</a></li>
+                    <li><a href="#contact">./contact</a></li>
+                </ul>
+            </nav>
+
+            <section class="hero-section">
+                <div class="hero-content">
+                    <span class="terminal-badge">[!] STATUS: SECURE_MATRIX_ACTIVE</span>
+                    <h1>Hi, I'm <span>Saeed Abdelgalil</span></h1>
+                    <p>Communications & Electronics Engineering student specializing in Advanced Network Infrastructure & Penetration Testing labs.</p>
+                    
+                    <div class="circular-icons-container">
+                        <a href="https://www.linkedin.com/in/saeed-sherief-23859a284" target="_blank" class="circle-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com/SS3R1F" target="_blank" class="circle-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.facebook.com/share/1DVafPua8Z/" target="_blank" class="circle-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saeedsherief?stkn=MWNqNTRxN3hwbHNxbg==" target="_blank" class="circle-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="tel:+201145691850" class="circle-icon" title="Call Me"><i class="fa-solid fa-phone"></i></a>
+                        <a href="mailto:sabdelgalilsherief@gmail.com" class="circle-icon" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn-primary">Execute Services --load</a>
+                        <a href="my cv 7.pdf" target="_blank" class="btn-primary"><i class="fa-solid fa-file-pdf"></i> cat ./resume.pdf</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about">
+                <div class="section-title-container">
+                    <div class="section-icon-badge"><i class="fa-solid fa-terminal"></i> # cat ./bio.txt</div>
+                    <h2 class="section-title">System <span>Overview</span></h2>
+                </div>
+                <div class="card-box">
+                    <p>I am an engineering student passionate about computer networks and cybersecurity. Having completed comprehensive networking training, I build secure infrastructures and configure advanced routing protocols. Currently, I focus heavily on <strong>Penetration Testing</strong>, vulnerability assessments, and simulated lab exploitation to secure digital assets.</p>
+                </div>
+            </section>
+
+            <section id="services">
+                <div class="section-title-container">
+                    <div class="section-icon-badge"><i class="fa-solid fa-shield-halved"></i> # ls ./services</div>
+                    <h2 class="section-title">My <span>Services</span></h2>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3>Network Penetration Testing</h3>
+                        <p>Simulating advanced cyber attacks to evaluate network infrastructure security, identifying vulnerabilities in routers, switches, and protocols.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3>Web & Mobile Pentesting</h3>
+                        <p>Performing rigorous security assessments and vulnerability exploitation analysis on web applications and mobile platforms to ensure complete data safety.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon-box">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3>Full Network Infrastructure</h3>
+                        <p>Designing, configuring, and deploying complete enterprise network topologies using OSPF, BGP, VLANs, VTP, and Wireless LAN Controllers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <div class="section-title-container">
+                    <div class="section-icon-badge"><i class="fa-solid fa-code"></i> # ls ./capabilities</div>
+                    <h2 class="section-title">Technical <span>Toolkit</span></h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>[+] Network Architecture & Cisco</h3>
+                        <p>Configuring Enterprise Routing & Switching, OSPF, iBGP full-mesh, VLANs, VTP, EtherChannel, and Wireless LAN Controllers.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>[+] Penetration Testing & CTFs</h3>
+                        <p>Executing security audits, vulnerability exploitation, FTP enumeration, and solving TryHackMe capture-the-flag challenges.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>[+] Hardware & IoT Security</h3>
+                        <p>Developing microcontroller hardware projects, integrating ESP32 chips with sensors, local web servers, and automated alert systems.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>[+] Linux & SecOps Command Line</h3>
+                        <p>Managing security operations, utilizing Nmap, Metasploit, traffic analysis mechanisms, and hardening network nodes.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>[+] Web Security & Defense</h3>
+                        <p>Analyzing web application vulnerabilities, mitigating XSS attacks, and implementing secure request/response validation protocols.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>[+] Scripting & Automation</h3>
+                        <p>Writing automation scripts and handling technical configuration tasks efficiently using modern programming tools.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <div class="section-title-container">
+                    <div class="section-icon-badge"><i class="fa-solid fa-paper-plane"></i> # ./connect_securely.sh</div>
+                    <h2 class="section-title">Get In <span>Touch</span></h2>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-illustration">
+                        <i class="fa-solid fa-terminal"></i>
+                        <h3 style="color: #ffffff; font-family: 'Fira Code', monospace; margin-bottom: 10px;">Saeed SecOps Lab</h3>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; color: #cbd5e1;">Drop a message and let's establish a secure communication channel.</p>
+                    </div>
+
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message encrypted and sent successfully!');">
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Message" required></textarea>
+                        <button type="submit" class="submit-btn">Execute Send</button>
+                    </form>
+                </div>
+            </section>
+
+            <footer>
+                <p>root@saeed-sec:~$ system breached / secured successfully [2026] --exit</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- كود جافا سكريبت لمنع المتصفح من حفظ مكان التمرير وإجبار الصفحة على البدء من الأعلى -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('beforeunload', function () {
+            window.scrollTo(0, 0);
+        });
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
